@@ -6,11 +6,10 @@ const messages = [
   "Invest your new income 🤑",
 ];
 
-function Button({ textColor, bgColor, onClick, text, emoji }) {
+function Button({ textColor, bgColor, onClick, text, emoji, children }) {
   return (
     <button onClick={onClick} style={{ background: bgColor, color: textColor }}>
-      <span>{emoji}</span>
-      {text}
+      {children}
     </button>
   );
 }
@@ -44,16 +43,12 @@ function App() {
               textColor={"#fff"}
               bgColor={"#7950f2"}
               onClick={handlePrevious}
-              text={"Previous"}
-              emoji={"👈"}
-            />
-            <Button
-              textColor={"#fff"}
-              bgColor={"#7950f2"}
-              onClick={handlePrevious}
-              text={"Next"}
-              emoji={"👉"}
-            />
+            >
+              <span>👈</span> Previous
+            </Button>
+            <Button textColor={"#fff"} bgColor={"#7950f2"} onClick={handleNext}>
+              Next<span>👉</span>
+            </Button>
           </div>
         </div>
       ) : null}
