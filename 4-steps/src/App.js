@@ -6,6 +6,14 @@ const messages = [
   "Invest your new income 🤑",
 ];
 
+function Button({ textColor, bgColor, onClick, text, emoji }) {
+  return (
+    <button onClick={onClick} style={{ background: bgColor, color: textColor }}>
+      <span>{emoji}</span>
+      {text}
+    </button>
+  );
+}
 function App() {
   // const step = 23;
   const [step, setStep] = useState(1);
@@ -32,18 +40,20 @@ function App() {
             Step {step}:{messages[step - 1]}
           </p>
           <div className="buttons">
-            <button
-              style={{ background: "#7950f2", color: "#fff" }}
+            <Button
+              textColor={"#fff"}
+              bgColor={"#7950f2"}
               onClick={handlePrevious}
-            >
-              Previous
-            </button>
-            <button
-              onClick={handleNext}
-              style={{ background: "#7950f2", color: "#fff" }}
-            >
-              Next{" "}
-            </button>
+              text={"Previous"}
+              emoji={"👈"}
+            />
+            <Button
+              textColor={"#fff"}
+              bgColor={"#7950f2"}
+              onClick={handlePrevious}
+              text={"Next"}
+              emoji={"👉"}
+            />
           </div>
         </div>
       ) : null}
