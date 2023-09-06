@@ -76,12 +76,11 @@ function NumResults({ movies }) {
     </p>
   );
 }
-function NavBar({ movies }) {
+function NavBar({ children }) {
   return (
     <nav className="nav-bar">
       <Logo />
-      <SearchBar />
-      <NumResults movies={movies} />
+      {children}
     </nav>
   );
 }
@@ -108,7 +107,7 @@ function MoviesList({ movies }) {
     </ul>
   );
 }
-function ListBox({ movies }) {
+function ListBox({ children }) {
   const [isOpen1, setIsOpen1] = useState(true);
   return (
     <div className="box">
@@ -118,7 +117,7 @@ function ListBox({ movies }) {
       >
         {isOpen1 ? "–" : "+"}
       </button>
-      {isOpen1 && <MoviesList movies={movies} />}
+      {isOpen1 && children}
     </div>
   );
 }
@@ -148,7 +147,7 @@ function WatchedMoviesList({ watched }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
-        <WatchedMovie movie={movie} />
+        <WatchedMovie movie={movie} key={movie.imdbID} />
       ))}
     </ul>
   );
@@ -205,14 +204,8 @@ function WatchedBox() {
   );
 }
 
-function Main({ movies }) {
-  return (
-    <main className="main">
-      <ListBox movies={movies} />
-
-      <WatchedBox />
-    </main>
-  );
+function Main({ children }) {
+  return <main className="main">{children}</main>;
 }
 
 export default function App() {
@@ -220,8 +213,16 @@ export default function App() {
   return (
     <>
       <h1>
-        <NavBar movies={movies} />
-        <Main movies={movies} />
+        <NavBar>
+          <SearchBar />
+          <NumResults movies={movies} />
+        </NavBar>
+        <Main>
+          <ListBox movies={movies}>
+            <MoviesList movies={movies} />
+          </ListBox>
+          <WatchedBox />
+        </Main>
       </h1>
     </>
   );
