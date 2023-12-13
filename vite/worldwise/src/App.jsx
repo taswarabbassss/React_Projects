@@ -1,3 +1,16 @@
-function App() {
-  return <div>Worldwise</div>;
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Homepage from "./pages/homepage";
+import Product from "./pages/product";
+import Pricing from "./pages/Pricing";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="product" element={<Product />} />
+        <Route path="pricing" element={<Pricing />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
