@@ -5,6 +5,7 @@
     "vite-plugin-eslint": "^1.8.1"
   },
   "dependencies": {
+    "json-server": "^0.17.4",
     "react-router-dom": "^6.20.1"
   }
 }
