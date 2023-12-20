@@ -10,14 +10,6 @@ function Map() {
       <h1>
         Position: {lat},{lng}
       </h1>
-
-      <button
-        onClick={() => {
-          setSearchParam({ lat: 23, lng: 53, else: "nothing" });
-        }}
-      >
-        Change Postion
-      </button>
     </div>
   );
 }
